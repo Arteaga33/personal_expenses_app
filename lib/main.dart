@@ -1,3 +1,6 @@
+//TODO: Implement a capital option, that allows input on how much you got and the spending, how much is left and debt.
+//TODO: make notifications that ask you to summit daily spending.
+//TODO: use a TTS to speak with the user. 
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +16,7 @@ void main() {
   // SystemChrome.setPreferredOrientations([
   //   DeviceOrientation.portraitUp,
   //   DeviceOrientation.portraitDown
-  // ]); //This forces to only allow landscape
+  // ]); //This forces to only allow landscape.
   runApp(const MyApp());
 }
 
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        errorColor: Colors.red, //This is already the default
+        //errorColor: Colors.red, //This is already the default and it has been deprecated.
         primarySwatch: Colors.green,
         //accentColor: Colors.amber, //Deprecated.
         fontFamily: 'Quicksand',
@@ -79,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     super.dispose();
   }
 
+  ///It gets the List<Transaction> converter from iterable to a list.
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
@@ -89,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     }).toList(); //I had to change form iterable to list.
   }
 
+  ///Creates a new transaction and adds it to the List<Transaction> at the end.
   void _addNewTransaction(
       String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
@@ -103,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     });
   }
 
+  ///Deletes a specific transaction with a given Id on the list.
   void _deleteTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere(
@@ -110,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     });
   }
 
+  ///This is the cool Modal Bottom Sheet to add the info for a new transaction.
   void _startAddNewTransaction(BuildContext ctx) {
     //To show a sheet that appears from below.
     showModalBottomSheet(
@@ -126,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     );
   }
 
+  ///Build the widgets in a landscape POV.
   List<Widget> _buildLanscapeContent(
       MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
     return [
@@ -155,6 +163,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     ];
   }
 
+  ///This builds a Widget list in a portrait POV.
   List<Widget> _buildPortraitContent(
       MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
     return [

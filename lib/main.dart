@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
+import './widgets/current_balance.dart';
 import './models/transaction.dart';
 
 void main() {
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold)),
         //toolbarTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20)),
       ),
-      home: const MyHomePage(title: 'Arteaga Personal Expenses'),
+      home: const MyHomePage(title: 'Personal Expenses'),
     );
   }
 }
@@ -167,6 +168,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
   List<Widget> _buildPortraitContent(
       MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
     return [
+      SizedBox(height: (mediaQuery.size.height -
+                  appBar.preferredSize.height)*0.1,
+      child: CurrentBalance(),),
       SizedBox(
           height: (mediaQuery.size.height -
                   appBar.preferredSize.height -

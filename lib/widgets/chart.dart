@@ -38,7 +38,7 @@ class Chart extends StatelessWidget {
     });
   }
 
-  Chart(this.recentTransactions){
+  Chart(this.recentTransactions, {Key? key}) : super(key: key){
     print('Constructor Chart');
   }
 

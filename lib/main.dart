@@ -4,7 +4,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 // import 'package:flutter/services.dart';
 
 import './widgets/chart.dart';
@@ -170,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver { /
     return [
       SizedBox(height: (mediaQuery.size.height -
                   appBar.preferredSize.height)*0.1,
-      child: CurrentBalance(),),
+      child: const CurrentBalance(),),
       SizedBox(
           height: (mediaQuery.size.height -
                   appBar.preferredSize.height -

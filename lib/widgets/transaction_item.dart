@@ -44,13 +44,13 @@ class _TransactionItemState extends State<TransactionItem> {
                   child: Text('\$${widget.transaction.amount}'))),
         ), //A wiget that is position at the begining oSf the ListTile.
         title: Text(widget.transaction.title,
-            style: Theme.of(context).textTheme.headline6),
+            style: Theme.of(context).textTheme.titleLarge),
         subtitle: Text(DateFormat.yMMMMEEEEd()
             .add_Hm()
             .format(widget.transaction.date)),
         trailing: MediaQuery.of(context).size.width > 360
             ? TextButton.icon(
-                icon:  Icon(Icons.delete, color: Theme.of(context).errorColor),
+                icon:  Icon(Icons.delete, color: Theme.of(context).colorScheme.error),
                 label: const Text('Delete'),
                 onPressed: () => widget.rmTx(widget.transaction.id),
               )
@@ -58,7 +58,7 @@ class _TransactionItemState extends State<TransactionItem> {
                 onPressed: () => widget.rmTx(widget.transaction
                     .id), // If I need to pass arguments to a function.
                 icon: const Icon(Icons.delete),
-                color: Theme.of(context).errorColor),
+                color: Theme.of(context).colorScheme.error),
       ),
     );
   }

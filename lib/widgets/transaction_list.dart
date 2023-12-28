@@ -7,7 +7,7 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function rmTx;
 
-  const TransactionList(this.transactions, this.rmTx);
+  const TransactionList(this.transactions, this.rmTx, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TransactionList extends StatelessWidget {
               children: [
                 Text(
                   'No transactions added yet!',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(
                   //This works as an spacer, doesnt need/require child.

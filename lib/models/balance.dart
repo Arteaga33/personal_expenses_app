@@ -1,5 +1,3 @@
-import 'package:flutter/rendering.dart';
-
 class Balance{
   final String id;
   final double currentBalance;
